@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/apk/res-auto">
+
+    <style name="ToolbarTitleStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/ToolbarTitleText</item>
+        <item name="subtitleTextAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+        <!-- Pushes the content (Navigation Icon) down -->
+        <item name="android:paddingTop">25dp</item>
+        <!-- Ensure gravity is top so padding takes effect from top -->
+        <item name="android:gravity">top</item>
+
+        <!-- Additional top margin for the Title -->
+        <item name="titleMarginTop">10dp</item>
+
+
+        <item name="android:outlineAmbientShadowColor" ns1:targetApi="p">
+            @android:color/transparent
+        </item>
+        <item name="android:outlineSpotShadowColor" ns1:targetApi="p">@android:color/transparent
+        </item>
+    </style>
+
+    <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="barLength">30dp</item>
+        <item name="thickness">4dp</item>
+        <item name="gapBetweenBars">5dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
+</resources>

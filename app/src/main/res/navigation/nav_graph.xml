@@ -3,16 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startActivity">
+    app:startDestination="@id/inicioFragment">
 
-    <activity
-        android:id="@+id/startActivity"
-        android:name="com.example.masterrollerdice.StartActivity"
-        android:label="activity_start"
-        tools:layout="@layout/activity_start" />
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.masterrollerdice.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.masterrollerdice.InicioFragment"
+        android:label="Dados"
+        tools:layout="@layout/fragment_inicio" />
+
+    <fragment
+        android:id="@+id/historialFragment"
+        android:name="com.example.masterrollerdice.HistorialFragment"
+        android:label="Historial"
+        tools:layout="@layout/fragment_historial" />
+
+    <fragment
+        android:id="@+id/estadisticasFragment"
+        android:name="com.example.masterrollerdice.EstadisticasFragment"
+        android:label="Estadísticas"
+        tools:layout="@layout/fragment_estadisticas" />
+
 </navigation>

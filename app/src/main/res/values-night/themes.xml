@@ -2,6 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MasterRollerDice" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/rojoPrincipal</item>
+        <item name="colorSecondary">@color/rojoSecundario</item>
+        <item name="background">@color/fondoOscuro</item>
+        <item name="toolbarStyle">@color/black</item>
+        <item name="drawerLayoutStyle">@color/FondoDrawer_ModoOscuro</item>
+
+        <item name="buttonStyle">@color/detalles_ModoOscuro</item>
     </style>
 </resources>

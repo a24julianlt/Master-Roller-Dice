@@ -1,5 +1,6 @@
 package com.example.masterrollerdice
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -18,7 +19,9 @@ class StartActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnInicio.setOnClickListener {
-            view.findNavController().navigate(R.id.mainActivity)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item>
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@id/inicioFragment"
+                    android:title="Dados"
+                    app:showAsAction="always"/>
+                <item
+                    android:id="@id/historialFragment"
+                    android:title="Historial"
+                    app:showAsAction="always"/>
+                <item
+                    android:id="@id/estadisticasFragment"
+                    android:title="Estadisticas"
+                    app:showAsAction="always"/>
+            </group>
+        </menu>
+    </item>
+</menu>

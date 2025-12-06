@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rojoPrincipal">#B11623</color>
+    <color name="rojoSecundario">#E53935</color>
+
+    <!--MODO OSCURO-->
+    <color name="fondoOscuro">#292C37</color>
+    <color name="detalles_ModoOscuro">#CCCCCC</color>
+    <color name="FondoDrawer_ModoOscuro">#595E72</color>
+
+    <!--MODO CLARO-->
+    <color name="fondoClaro">#CCCCCC</color>
+    <color name="toolbarClaro">#1A1A1A</color>
 </resources>
