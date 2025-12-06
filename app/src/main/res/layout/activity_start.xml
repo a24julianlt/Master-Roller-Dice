@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B11623"
+    android:padding="40dp"
+    tools:context=".StartActivity">
+
+    <TextView
+        android:id="@+id/txtInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgDadoInicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgDadoInicio"
+        android:layout_width="795px"
+        android:layout_height="1010px"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/dado_inicio_con_blanco"
+        app:layout_constraintBottom_toTopOf="@id/btnInicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInicio" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnInicio"
+        android:layout_width="650px"
+        android:layout_height="350px"
+        android:backgroundTint="#E53935"
+        android:text="@string/select_dice"
+        android:textSize="30sp"
+        app:cornerRadius="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgDadoInicio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
