@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:ns1="http://schemas.android.com/apk/res-auto">
+<resources xmlns:ns1="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
 
     <style name="ToolbarTitleStyle" parent="Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/ToolbarTitleText</item>
@@ -19,7 +19,8 @@
         <item name="android:outlineAmbientShadowColor" ns1:targetApi="p" tools:targetApi="28">
             @android:color/transparent
         </item>
-        <item name="android:outlineSpotShadowColor" ns1:targetApi="p" tools:targetApi="28">@android:color/transparent
+        <item name="android:outlineSpotShadowColor" ns1:targetApi="p" tools:targetApi="28">
+            @android:color/transparent
         </item>
     </style>
 
@@ -45,11 +46,12 @@
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
-    
+
     <!-- Shape con todas las esquinas redondeadas -->
     <style name="ShapeAllRounded" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25dp</item>
     </style>
+
 
 </resources>

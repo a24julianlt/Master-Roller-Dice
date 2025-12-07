@@ -14,6 +14,6 @@
     <color name="fondoClaro">#CCCCCC</color>
     <color name="toolbarClaro">#1A1A1A</color>
     
-    <!-- Drawer Background (Light Mode) -->
-    <color name="drawer_background">@color/white</color>
+    <!-- Drawer Background (Night Mode) -->
+    <color name="drawer_background">@color/FondoDrawer_ModoOscuro</color>
 </resources>
