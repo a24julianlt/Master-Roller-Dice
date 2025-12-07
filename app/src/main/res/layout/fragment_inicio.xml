@@ -5,7 +5,7 @@
     android:id="@+id/inicioFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fondoOscuro"
+    android:background="?attr/background"
     tools:context=".InicioFragment">
 
     <GridLayout
@@ -35,7 +35,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d4_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
         <!-- D6 -->
@@ -51,7 +51,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d6_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
         <!-- D8 -->
@@ -67,7 +67,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d8_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
         <!-- D10 -->
@@ -83,7 +83,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d10_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
         <!-- D12 -->
@@ -93,13 +93,13 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:backgroundTint="@color/fondoOscuro"
+            android:backgroundTint="?attr/background"
             app:cardCornerRadius="20dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d12_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
         <!-- D20 -->
@@ -109,13 +109,13 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:backgroundTint="@color/fondoOscuro"
+            android:backgroundTint="?attr/background"
             app:cardCornerRadius="20dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d20_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
         <!-- D100 -->
@@ -127,13 +127,13 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:backgroundTint="@color/fondoOscuro"
+            android:backgroundTint="?attr/background"
             app:cardCornerRadius="20dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/dado_inicio_sin_blanco" />
+                android:src="@drawable/d100_sin_fondo" />
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
@@ -158,8 +158,7 @@
         android:layout_width="match_parent"
         android:layout_height="250px"
         android:gravity="center"
-        android:text="54"
-        android:textColor="@color/white"
+        android:text=""
         android:textSize="70sp"
         app:layout_constraintBottom_toTopOf="@+id/cardExpandable"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,7 +204,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="20dp"
                     android:layout_marginEnd="34dp"
-                    android:backgroundTint="@color/detalles_ModoOscuro"
+                    android:backgroundTint="?attr/buttonStyle"
                     android:padding="10dp"
                     app:cornerRadius="20dp"
                     app:icon="@drawable/minus"
@@ -237,7 +236,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="20dp"
                     android:layout_marginStart="36dp"
-                    android:backgroundTint="@color/detalles_ModoOscuro"
+                    android:backgroundTint="?attr/buttonStyle"
                     android:padding="10dp"
                     app:cornerRadius="20dp"
                     app:icon="@drawable/add"
