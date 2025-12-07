@@ -1,0 +1,1 @@
+data class Dado(val caras: Int)
