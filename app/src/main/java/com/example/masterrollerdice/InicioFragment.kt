@@ -1,11 +1,12 @@
 package com.example.masterrollerdice
 
 import android.animation.ValueAnimator
-import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import com.example.masterrollerdice.databinding.FragmentInicioBinding
 
@@ -29,33 +30,50 @@ class InicioFragment : Fragment() {
 
 
         // Bloque modificador
-        var expandido = false
+        var expanded = false
 
-        val bloque = view.findViewById<View>(R.id.bloqueExpandable)
+        binding.cardExpandable.setOnClickListener {
+            expanded = !expanded
 
-        bloque.setOnClickListener {
-            expandido = !expandido
+            if (expanded) {
+                // Mostrar contenido interior
+                binding.layoutModificador.visibility = View.VISIBLE
 
-            val alturaInicial = if (expandido) 80 else 180   // dp pequeño ↔ grande
-            val alturaFinal = if (expandido) 180 else 80   // dp grande ↔ pequeño
-
-            val from = dpToPx(requireContext(), alturaInicial)
-            val to = dpToPx(requireContext(), alturaFinal)
-
-            val anim = ValueAnimator.ofInt(from, to)
-            anim.duration = 300
-            anim.addUpdateListener {
-                val params = bloque.layoutParams
-                params.height = it.animatedValue as Int
-                bloque.layoutParams = params
+                animateHeight(
+                    binding.cardExpandable,
+                    binding.cardExpandable.height,
+                    175.dpToPx()
+                )
+            } else {
+                animateHeight(
+                    binding.cardExpandable,
+                    binding.cardExpandable.height,
+                    80.dpToPx()
+                ) {
+                    // Ocultamos el contenido solo cuando termina la animación
+                    binding.layoutModificador.visibility = View.GONE
+                }
             }
-            anim.start()
         }
+
 
     }
 
-    fun dpToPx(context: Context, dp: Int): Int =
-        (dp * context.resources.displayMetrics.density).toInt()
+    private fun animateHeight(view: View, start: Int, end: Int, endAction: (() -> Unit)? = null) {
+        val animator = ValueAnimator.ofInt(start, end)
+        animator.addUpdateListener {
+            val value = it.animatedValue as Int
+            view.layoutParams.height = value
+            view.requestLayout()
+        }
+        animator.duration = 300
+        animator.doOnEnd {
+            endAction?.invoke()
+        }
+        animator.start()
+    }
+
+    fun Int.dpToPx() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 
     override fun onDestroyView() {

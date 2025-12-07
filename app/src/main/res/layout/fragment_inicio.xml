@@ -148,32 +148,99 @@
         android:textColor="@color/white"
         android:textSize="40sp"
         app:cornerRadius="30dp"
+        app:layout_constraintBottom_toTopOf="@id/txtResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridDados" />
 
     <TextView
         android:id="@+id/txtResult"
-        android:layout_width="250px"
+        android:layout_width="match_parent"
         android:layout_height="250px"
-        android:text="543"
         android:gravity="center"
+        android:text="54"
         android:textColor="@color/white"
         android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardExpandable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRoll" />
 
-    <View
-        android:id="@+id/bloqueExpandable"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardExpandable"
         android:layout_width="300dp"
         android:layout_height="80dp"
-        android:background="@color/rojoPrincipal"
-        app:circularflow_radiusInDP="30dp"
-        android:elevation="10dp"
-
+        app:cardBackgroundColor="@color/rojoPrincipal"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:shapeAppearanceOverlay="@style/ShapeTopRounded">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MODIFICADOR"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutModificador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMinus"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:layout_marginEnd="34dp"
+                    android:backgroundTint="@color/detalles_ModoOscuro"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtModificador"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtModificador"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_txtview_modificador"
+                    android:gravity="center"
+                    android:text="534"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnPlus"
+                    app:layout_constraintStart_toEndOf="@id/btnMinus"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPlus"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="36dp"
+                    android:backgroundTint="@color/detalles_ModoOscuro"
+                    app:cornerRadius="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txtModificador"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
