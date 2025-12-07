@@ -32,7 +32,7 @@ class HistorialAdapter(
         val b = holder.binding  // Alias para claridad
 
         // Número de tirada
-        b.numTirada.text = "Tirada ${position + 1}"
+        b.numTirada.text = "Tirada ${item.numTirada}"
 
         // Formatos
         val horaFormato = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
@@ -45,9 +45,27 @@ class HistorialAdapter(
         b.resultTirada.text = item.resultado.toString()
         b.modificadorTirada.text = item.modificador.toString()
 
-        // Recycler de dados con binding
+        // Configuración avanzada del Grid para centrar elementos
+        val totalDados = item.dados.size
+        val layoutManager = GridLayoutManager(holder.itemView.context, 6) // Usamos 6 columnas base
+
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                val resto = totalDados % 3
+                val esUltimaFila = position >= (totalDados - resto)
+
+                if (resto == 1 && position == totalDados - 1) {
+                    return 6 // El último elemento ocupa todo el ancho (centrado)
+                }
+                if (resto == 2 && position >= totalDados - 2) {
+                    return 3 // Los dos últimos ocupan la mitad cada uno
+                }
+                return 2 // Por defecto, 3 elementos por fila (6 / 2 = 3 huecos)
+            }
+        }
+
         b.recyclerDados.apply {
-            layoutManager = GridLayoutManager(holder.itemView.context, 3)
+            this.layoutManager = layoutManager
             adapter = DadosHistorialAdapter(item.dados)
             setHasFixedSize(true)
         }

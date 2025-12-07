@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.masterrollerdice.databinding.FragmentInicioBinding
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.MaterialColors
@@ -21,7 +21,8 @@ class InicioFragment : Fragment() {
     private var _binding: FragmentInicioBinding? = null
     private val binding get() = _binding!!
 
-    private val model: DadosViewModel by viewModels()
+    // Use activityViewModels to share data with other fragments/activity
+    private val model: DadosViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,7 @@ class InicioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        model.clear()
 
         val colorFondo =
             MaterialColors.getColor(requireView(), androidx.appcompat.R.attr.background)
@@ -72,7 +74,10 @@ class InicioFragment : Fragment() {
 
 
         binding.btnRoll.setOnClickListener {
-            model.roll(model.modificador.value)
+            if (!model.listaDados.isEmpty()) {
+                model.roll(model.modificador.value)
+            }
+
         }
 
         model.result.observe(viewLifecycleOwner) { value ->

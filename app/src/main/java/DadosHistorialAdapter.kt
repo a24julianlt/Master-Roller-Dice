@@ -32,7 +32,7 @@ class DadosHistorialAdapter(
             10 -> R.drawable.d10_sin_fondo
             12 -> R.drawable.d12_sin_fondo
             20 -> R.drawable.d20_sin_fondo
-            else -> R.drawable.dado_inicio_sin_blanco
+            else -> R.drawable.d100_sin_fondo
         }
 
         holder.binding.imgDado.setImageResource(imagenId)

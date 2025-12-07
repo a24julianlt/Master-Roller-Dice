@@ -14,6 +14,7 @@ class DadosViewModel : ViewModel() {
 
     var result = MutableLiveData<Int>().apply { value = 0 } // valor inicial 0
 
+    private var contadorTiradas = 0 // Contador interno para numTirada
 
     fun roll(mod: Int?) {
         result.value = 0
@@ -34,11 +35,20 @@ class DadosViewModel : ViewModel() {
             Dado(d.caras, d.resultado)     // <--- Copiar resultado también
         }
 
-        listaHistorial.value?.add(
-            Historial(copiaDados, fecha, hora, mod ?: 0, result.value ?: 0)
+        contadorTiradas++
+
+        // Añadimos en la posición 0 para que sea el primero de la lista
+        listaHistorial.value?.add(0,
+            Historial(copiaDados, fecha, hora, mod ?: 0, result.value ?: 0, contadorTiradas)
         )
         listaHistorial.value = listaHistorial.value        // <-- fuerza actualización
 
+    }
+
+    fun clear() {
+        listaDados.clear()
+        result.value = 0
+        modificador.value = 0
     }
 
 

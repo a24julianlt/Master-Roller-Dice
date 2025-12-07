@@ -6,5 +6,6 @@ data class Historial(
     val fecha : Date,
     val hora : Time,
     val modificador : Int,
-    val resultado : Int
+    val resultado : Int,
+    val numTirada: Int
 )
