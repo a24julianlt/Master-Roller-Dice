@@ -1,9 +1,17 @@
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.sql.Time
 import java.util.Date
 
-class DadosViewModel : ViewModel() {
+class DadosViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val gson = Gson()
+    private val fileName = "historial.json"
 
     var listaDados = mutableListOf<Dado>()
 
@@ -15,6 +23,10 @@ class DadosViewModel : ViewModel() {
     var result = MutableLiveData<Int>().apply { value = 0 } // valor inicial 0
 
     private var contadorTiradas = 0 // Contador interno para numTirada
+
+    init {
+        loadHistorial()
+    }
 
     fun roll(mod: Int?) {
         result.value = 0
@@ -38,18 +50,50 @@ class DadosViewModel : ViewModel() {
         contadorTiradas++
 
         // Añadimos en la posición 0 para que sea el primero de la lista
-        listaHistorial.value?.add(0,
-            Historial(copiaDados, fecha, hora, mod ?: 0, result.value ?: 0, contadorTiradas)
-        )
+        val nuevaTirada = Historial(copiaDados, fecha, hora, mod ?: 0, result.value ?: 0, contadorTiradas)
+        listaHistorial.value?.add(0, nuevaTirada)
         listaHistorial.value = listaHistorial.value        // <-- fuerza actualización
-
+        
+        saveHistorial()
     }
 
+    // Método para borrar el historial
+    fun clearHistorial() {
+        listaHistorial.value?.clear()
+        listaHistorial.value = listaHistorial.value // Notificar observadores
+        contadorTiradas = 0 // Reiniciar contador
+        saveHistorial() // Guardar cambios (archivo vacío)
+    }
+
+    // Método para borrar la selección de dados actual (si es necesario mantenerlo separado)
     fun clear() {
         listaDados.clear()
         result.value = 0
         modificador.value = 0
     }
 
+    private fun saveHistorial() {
+        val context = getApplication<Application>().applicationContext
+        val json = gson.toJson(listaHistorial.value)
+        val file = File(context.filesDir, fileName)
+        file.writeText(json)
+    }
 
+    private fun loadHistorial() {
+        val context = getApplication<Application>().applicationContext
+        val file = File(context.filesDir, fileName)
+        if (file.exists()) {
+            val json = file.readText()
+            val type = object : TypeToken<MutableList<Historial>>() {}.type
+            val loadedList: MutableList<Historial> = gson.fromJson(json, type)
+            
+            // Actualizar contador basado en la última tirada (que es la primera de la lista por orden inverso)
+            if (loadedList.isNotEmpty()) {
+                // Buscamos el numTirada más alto para seguir contando
+                contadorTiradas = loadedList.maxOf { it.numTirada }
+            }
+            
+            listaHistorial.value = loadedList
+        }
+    }
 }

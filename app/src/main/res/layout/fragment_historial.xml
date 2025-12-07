@@ -7,15 +7,28 @@
     android:layout_height="match_parent"
     android:background="?attr/background"
     android:orientation="vertical"
-    android:paddingStart="20dp"
-    android:paddingTop="20dp"
-    android:paddingEnd="20dp"
     tools:context=".HistorialFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHistorial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Dim layer -->
+    <View
+        android:id="@+id/dimView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#80000000"
+        android:elevation="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,11 +46,60 @@
         app:shapeAppearanceOverlay="@style/ShapeTopRounded">
 
         <TextView
+            android:id="@+id/txtBorrarHistorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/borrar_historial"
             android:textColor="@color/white"
             android:textSize="25sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutModificador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="¿Estas seguro de borrar tu historial de tiradas?"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelarBorrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/rojoSecundario"
+                android:text="CANCELAR"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/aceptarBorrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="BORRAR"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:backgroundTint="@color/rojoPrincipal"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:strokeColor="@color/rojoSecundario"
+                app:strokeWidth="5dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
