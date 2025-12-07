@@ -14,31 +14,31 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.masterrollerdice.databinding.FragmentInicioBinding
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.color.MaterialColors
 
 class InicioFragment : Fragment() {
     private var _binding: FragmentInicioBinding? = null
-    private val binding: FragmentInicioBinding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
-    val model: DadosViewModel by viewModels()
+    private val model: DadosViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentInicioBinding.inflate(inflater, container, false)
-        val view = binding.root
-        // Inflate the layout for this fragment
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val colorFondo = ContextCompat.getColor(requireContext(), R.color.fondoOscuro)
+
+        val colorFondo =
+            MaterialColors.getColor(requireView(), androidx.appcompat.R.attr.background)
         val colorSeleccion = ContextCompat.getColor(requireContext(), R.color.rojoSecundario)
 
-        // Mapear cada CardView con su número de caras
         val dadosMap = mapOf(
             binding.cardD4 to 4,
             binding.cardD6 to 6,
@@ -49,19 +49,27 @@ class InicioFragment : Fragment() {
             binding.cardD100 to 100
         )
 
-        // Asignar un listener a todos los CardViews
         dadosMap.forEach { (card, caras) ->
+            val materialCard = card as MaterialCardView
+            // Fondo inicial según tema
+            materialCard.backgroundTintList = ColorStateList.valueOf(colorFondo)
+
             card.setOnClickListener {
                 val dado = Dado(caras)
                 if (model.listaDados.contains(dado)) {
                     model.listaDados.remove(dado)
-                    card.backgroundTintList = ColorStateList.valueOf(colorFondo)
+                    materialCard.backgroundTintList =
+                        ColorStateList.valueOf(colorFondo) // vuelve al color del tema
                 } else {
                     model.listaDados.add(dado)
-                    card.backgroundTintList = ColorStateList.valueOf(colorSeleccion)
+                    materialCard.backgroundTintList =
+                        ColorStateList.valueOf(colorSeleccion) // rojo al seleccionar
                 }
             }
         }
+
+
+
 
         binding.btnRoll.setOnClickListener {
             model.roll(model.modificador.value)
@@ -83,35 +91,19 @@ class InicioFragment : Fragment() {
             model.modificador.value = model.modificador.value?.plus(1)
         }
 
-
-        // Bloque modificador
+        // Bloque modificador expandible
         var expanded = false
-
         binding.cardExpandable.setOnClickListener {
             expanded = !expanded
-
             if (expanded) {
-                // Mostrar contenido interior
                 binding.layoutModificador.visibility = View.VISIBLE
-
-                animateHeight(
-                    binding.cardExpandable,
-                    binding.cardExpandable.height,
-                    175.dpToPx()
-                )
+                animateHeight(binding.cardExpandable, binding.cardExpandable.height, 175.dpToPx())
             } else {
-                animateHeight(
-                    binding.cardExpandable,
-                    binding.cardExpandable.height,
-                    80.dpToPx()
-                ) {
-                    // Ocultamos el contenido solo cuando termina la animación
+                animateHeight(binding.cardExpandable, binding.cardExpandable.height, 80.dpToPx()) {
                     binding.layoutModificador.visibility = View.GONE
                 }
             }
         }
-
-
     }
 
     private fun animateHeight(view: View, start: Int, end: Int, endAction: (() -> Unit)? = null) {
@@ -122,18 +114,14 @@ class InicioFragment : Fragment() {
             view.requestLayout()
         }
         animator.duration = 300
-        animator.doOnEnd {
-            endAction?.invoke()
-        }
+        animator.doOnEnd { endAction?.invoke() }
         animator.start()
     }
 
     fun Int.dpToPx() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }
