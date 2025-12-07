@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/background">
+
+    <TextView
+        android:id="@+id/num_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tirada 45"
+        android:textColor="@color/rojoPrincipal"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hora_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="12:55:60"
+        android:textColor="@color/rojoSecundario"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerDados"
+        app:layout_constraintEnd_toStartOf="@+id/fecha_tirada" />
+
+    <TextView
+        android:id="@+id/fecha_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01/02/2026"
+        android:textColor="@color/rojoSecundario"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerDados"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="307px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num_tirada" />
+
+    <TextView
+        android:id="@+id/txtResult_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado: "
+        android:textColor="@color/rojoPrincipal"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/result_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textColor="@color/rojoPrincipal"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtResult_tirada" />
+
+    <TextView
+        android:id="@+id/txtModificador_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificador: "
+        android:textColor="@color/rojoSecundario"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/modificador_tirada" />
+
+    <TextView
+        android:id="@+id/modificador_tirada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textColor="@color/rojoSecundario"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

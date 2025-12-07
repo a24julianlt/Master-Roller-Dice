@@ -7,7 +7,8 @@ class DadosViewModel : ViewModel() {
 
     var listaDados = mutableListOf<Dado>()
 
-    var listaHistorial = mutableListOf<Historial>()
+    val listaHistorial = MutableLiveData<MutableList<Historial>>().apply { value = mutableListOf() }
+
 
     var modificador = MutableLiveData<Int>().apply { value = 0 } // valor inicial 0
 
@@ -15,27 +16,30 @@ class DadosViewModel : ViewModel() {
 
 
     fun roll(mod: Int?) {
+        result.value = 0
+
+        listaDados.forEach { dado ->
+            val randomNumber = (1..dado.caras).random()
+            dado.resultado = randomNumber   // <--- Guardar resultado en el dado
+            result.value = result.value?.plus(randomNumber) ?: randomNumber
+        }
+
+        result.value = result.value?.plus(mod ?: 0)
+
         val fecha = Date()
         val hora = Time(System.currentTimeMillis())
 
-        // 1. Generar resultados individuales
-        val resultados = listaDados.map { dado ->
-            (1..dado.caras).random()
+        // Copia los dados, para que no cambien en el futuro
+        val copiaDados = listaDados.map { d ->
+            Dado(d.caras, d.resultado)     // <--- Copiar resultado también
         }
 
-        // 2. Calcular total
-        result.value = resultados.sum() + (mod ?: 0)
-
-        // 3. Guardar historial real
-        listaHistorial.add(
-            Historial(
-                dados = listaDados.toList(),
-                fecha = fecha,
-                hora = hora,
-                modificador = mod ?: 0,
-                resultado = result.value ?: 0
-            )
+        listaHistorial.value?.add(
+            Historial(copiaDados, fecha, hora, mod ?: 0, result.value ?: 0)
         )
+        listaHistorial.value = listaHistorial.value        // <-- fuerza actualización
+
     }
+
 
 }
