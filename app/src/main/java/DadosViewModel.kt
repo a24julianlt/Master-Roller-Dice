@@ -1,9 +1,13 @@
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.sql.Time
+import java.util.Date
 
 class DadosViewModel : ViewModel() {
 
     var listaDados = mutableListOf<Dado>()
+
+    var listaHistorial = mutableListOf<Historial>()
 
     var modificador = MutableLiveData<Int>().apply { value = 0 } // valor inicial 0
 
@@ -11,14 +15,27 @@ class DadosViewModel : ViewModel() {
 
 
     fun roll(mod: Int?) {
-        result.value = 0
+        val fecha = Date()
+        val hora = Time(System.currentTimeMillis())
 
-        listaDados.forEach { dado ->
-            val randomNumber = (1..dado.caras).random()
-            result.value = result.value?.plus(randomNumber) ?: randomNumber
+        // 1. Generar resultados individuales
+        val resultados = listaDados.map { dado ->
+            (1..dado.caras).random()
         }
 
-        result.value = result.value?.plus(mod ?: 0)
+        // 2. Calcular total
+        result.value = resultados.sum() + (mod ?: 0)
 
+        // 3. Guardar historial real
+        listaHistorial.add(
+            Historial(
+                dados = listaDados.toList(),
+                fecha = fecha,
+                hora = hora,
+                modificador = mod ?: 0,
+                resultado = result.value ?: 0
+            )
+        )
     }
+
 }
