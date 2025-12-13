@@ -1,14 +1,22 @@
+package com.example.masterrollerdice
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.masterrollerdice.R
 import com.example.masterrollerdice.databinding.ItemDadosBinding
 
+/**
+ * Adaptador para mostrar los resultados individuales de cada dado dentro de una tirada en el historial.
+ * Muestra el icono del dado y el número que salió.
+ */
 class DadosHistorialAdapter(
     private var dados: List<Dado>
 ) : RecyclerView.Adapter<DadosHistorialAdapter.DadoViewHolder>() {
 
-    inner class DadoViewHolder(val binding: ItemDadosBinding) :
+    /**
+     * ViewHolder que mantiene las referencias a la vista de cada dado usando ViewBinding.
+     */
+    class DadoViewHolder(val binding: ItemDadosBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DadoViewHolder {
@@ -39,10 +47,4 @@ class DadosHistorialAdapter(
     }
 
     override fun getItemCount(): Int = dados.size
-
-    fun update(nuevaLista: List<Dado>) {
-        dados = nuevaLista
-        notifyDataSetChanged()
-    }
-
 }

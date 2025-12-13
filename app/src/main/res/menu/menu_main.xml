@@ -20,4 +20,24 @@
             </group>
         </menu>
     </item>
+
+    <item>
+        <menu>
+            <item
+                android:id="@+id/theme_switch_item"
+                android:title="Modo Oscuro"
+                app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/sound_switch_item"
+                android:title="Sonido"
+                app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/vibration_switch_item"
+                android:title="Vibración"
+                app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+                app:showAsAction="always" />
+        </menu>
+    </item>
 </menu>

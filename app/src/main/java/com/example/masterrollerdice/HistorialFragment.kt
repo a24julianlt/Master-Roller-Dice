@@ -1,10 +1,5 @@
 package com.example.masterrollerdice
 
-import DadosViewModel
-import HistorialAdapter
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.res.Resources
 import android.os.Bundle
@@ -12,144 +7,153 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Toast
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.masterrollerdice.databinding.FragmentHistorialBinding
+import com.google.android.material.card.MaterialCardView
 
+/**
+ * Fragmento que muestra el historial de tiradas.
+ * Permite visualizar las tiradas pasadas y borrar el historial mediante un menú desplegable animado.
+ */
 class HistorialFragment : Fragment() {
 
     private var _binding: FragmentHistorialBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: DadosViewModel by activityViewModels()
-    private lateinit var adapter: HistorialAdapter
-    
-    private var isElevated = false
+    // Use activityViewModels to share data with other fragments/activity
+    private val model: DadosViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHistorialBinding.inflate(inflater, container, false)
-
-        // Adapter comienza vacío
-        adapter = HistorialAdapter(emptyList())
-
-        binding.recyclerHistorial.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerHistorial.adapter = adapter
-
-        // Observar lista de historiales
-        viewModel.listaHistorial.observe(viewLifecycleOwner) { lista ->
-            adapter.update(lista)
-        }
-
-        binding.cardExpandable.setOnClickListener {
-            if (!isElevated) {
-                toggleCardElevation()
-            }
-        }
-        
-        binding.dimView.setOnClickListener {
-             if (isElevated) toggleCardElevation()
-        }
-
-        binding.cancelarBorrar.setOnClickListener {
-            if (isElevated) toggleCardElevation()
-        }
-
-        binding.aceptarBorrar.setOnClickListener {
-            viewModel.clearHistorial() // <--- CAMBIO AQUÍ: Llamamos al método que borra el historial
-            if (isElevated) toggleCardElevation()
-        }
-
         return binding.root
     }
 
-    private fun toggleCardElevation() {
-        val parentHeight = (binding.root as View).height
-        // Altura inicial y final del card
-        val startHeight = if (isElevated) 250.dpToPx() else 80.dpToPx()
-        val endHeight = if (isElevated) 80.dpToPx() else 250.dpToPx()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val cardHeight = endHeight // Usamos la altura destino para calcular el centro
-        
-        // Calcular la distancia al centro
-        val translationY = if (isElevated) {
-            0f 
-        } else {
-            -((parentHeight - cardHeight) / 2f) 
+        val adapter = HistorialAdapter(mutableListOf())
+        binding.recyclerHistorial.layoutManager = LinearLayoutManager(context)
+        binding.recyclerHistorial.adapter = adapter
+
+        model.listaHistorial.observe(viewLifecycleOwner) { historialList ->
+            adapter.update(historialList)
+            if (historialList.isNotEmpty()) {
+                binding.recyclerHistorial.scrollToPosition(0)
+            }
         }
 
-        // 1. Animar Translación Y
-        val translationAnimator = ObjectAnimator.ofFloat(binding.cardExpandable, "translationY", translationY)
-        translationAnimator.duration = 400
-        translationAnimator.interpolator = AccelerateDecelerateInterpolator()
-        
-        // 2. Animar Altura del Card
-        val heightAnimator = ValueAnimator.ofInt(startHeight, endHeight)
-        heightAnimator.addUpdateListener { valueAnimator ->
-            val value = valueAnimator.animatedValue as Int
-            val layoutParams = binding.cardExpandable.layoutParams
-            layoutParams.height = value
-            binding.cardExpandable.layoutParams = layoutParams
+        var expanded = false
+
+        binding.cardExpandable.setOnClickListener {
+            if (!expanded) {
+                expanded = true
+                binding.txtBorrarHistorial.visibility = View.GONE
+                binding.layoutModificador.visibility = View.VISIBLE
+                binding.dimView.visibility = View.VISIBLE
+
+                // Calcular centro vertical
+                val parentHeight = binding.root.height
+                val targetHeight = 250.dpToPx()
+                val targetMargin = (parentHeight - targetHeight) / 2
+
+                animateCard(
+                    binding.cardExpandable,
+                    80.dpToPx(),
+                    targetHeight,
+                    0,
+                    targetMargin,
+                    true
+                )
+            }
         }
-        heightAnimator.duration = 400
-        heightAnimator.interpolator = AccelerateDecelerateInterpolator()
 
-        // 3. Gestionar visibilidad de contenidos
-        if (!isElevated) {
-            // SUBIENDO: Ocultar titulo, mostrar confirmación
-            binding.txtBorrarHistorial.visibility = View.GONE
-            binding.layoutModificador.visibility = View.VISIBLE
-            binding.layoutModificador.alpha = 0f
-            binding.layoutModificador.animate().alpha(1f).setDuration(400).start()
-            
-            // Cambiar a esquinas totalmente redondeadas
-            binding.cardExpandable.shapeAppearanceModel = binding.cardExpandable.shapeAppearanceModel.withCornerSize(25.dpToPx().toFloat())
+        val collapseListener = View.OnClickListener {
+            if (expanded) {
+                expanded = false
+                binding.dimView.visibility = View.GONE
 
-        } else {
-            // BAJANDO: Ocultar confirmación, mostrar titulo
-            binding.layoutModificador.animate().alpha(0f).setDuration(200).withEndAction {
-                binding.layoutModificador.visibility = View.GONE
-                binding.txtBorrarHistorial.visibility = View.VISIBLE
-            }.start()
-            
-            // Volver a esquinas superiores redondeadas (o 0 abajo)
-            binding.cardExpandable.shapeAppearanceModel = binding.cardExpandable.shapeAppearanceModel.toBuilder()
-                .setTopLeftCornerSize(25.dpToPx().toFloat())
-                .setTopRightCornerSize(25.dpToPx().toFloat())
-                .setBottomLeftCornerSize(0f)
-                .setBottomRightCornerSize(0f)
+                // Calcular desde dónde bajar (el centro actual)
+                val parentHeight = binding.root.height
+                val startHeight = 250.dpToPx()
+                val startMargin = (parentHeight - startHeight) / 2
+
+                animateCard(
+                    binding.cardExpandable,
+                    startHeight,
+                    80.dpToPx(),
+                    startMargin,
+                    0,
+                    false
+                ) {
+                    binding.layoutModificador.visibility = View.GONE
+                    binding.txtBorrarHistorial.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        binding.cancelarBorrar.setOnClickListener(collapseListener)
+        binding.dimView.setOnClickListener(collapseListener)
+
+        binding.aceptarBorrar.setOnClickListener {
+            model.clearHistorial()
+            Toast.makeText(requireContext(), "Historial borrado", Toast.LENGTH_SHORT).show()
+            collapseListener.onClick(it)
+        }
+    }
+
+    private fun animateCard(
+        card: MaterialCardView,
+        startHeight: Int,
+        endHeight: Int,
+        startMargin: Int,
+        endMargin: Int,
+        isExpanding: Boolean,
+        endAction: (() -> Unit)? = null
+    ) {
+        val animator = ValueAnimator.ofFloat(0f, 1f)
+        animator.addUpdateListener {
+            val fraction = it.animatedValue as Float
+            val params = card.layoutParams as ViewGroup.MarginLayoutParams
+
+            // Interpolar valores de altura y margen inferior
+            params.height = (startHeight + (endHeight - startHeight) * fraction).toInt()
+            params.bottomMargin = (startMargin + (endMargin - startMargin) * fraction).toInt()
+            card.layoutParams = params
+        }
+
+        // Manejar cambio de forma (Shape) para redondear bordes al despegarse
+        if (isExpanding) {
+            // Cuando sube, redondeamos todas las esquinas para que parezca un diálogo flotante
+            card.shapeAppearanceModel = card.shapeAppearanceModel.toBuilder()
+                .setAllCornerSizes(25.dpToPx().toFloat())
                 .build()
         }
 
-        // Ejecutar animaciones
-        translationAnimator.start()
-        heightAnimator.start()
-        
-        // Animar dimView (fondo oscuro)
-        if (!isElevated) {
-            binding.dimView.visibility = View.VISIBLE
-            val dimAnimator = ObjectAnimator.ofFloat(binding.dimView, "alpha", 0f, 1f)
-            dimAnimator.duration = 400
-            dimAnimator.start()
-        } else {
-            val dimAnimator = ObjectAnimator.ofFloat(binding.dimView, "alpha", 1f, 0f)
-            dimAnimator.duration = 400
-            dimAnimator.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.dimView.visibility = View.GONE
-                }
-            })
-            dimAnimator.start()
+        animator.duration = 300
+        animator.interpolator = AccelerateDecelerateInterpolator()
+
+        animator.doOnEnd {
+            if (!isExpanding) {
+                // Al volver al fondo, restaurar forma de "pestaña" (solo bordes superiores redondeados)
+                card.shapeAppearanceModel = card.shapeAppearanceModel.toBuilder()
+                    .setAllCornerSizes(0f)
+                    .setTopLeftCornerSize(25.dpToPx().toFloat())
+                    .setTopRightCornerSize(25.dpToPx().toFloat())
+                    .build()
+            }
+            endAction?.invoke()
         }
-        
-        isElevated = !isElevated
+        animator.start()
     }
 
-    private fun Int.dpToPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+    private fun Int.dpToPx() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
     override fun onDestroyView() {
         super.onDestroyView()

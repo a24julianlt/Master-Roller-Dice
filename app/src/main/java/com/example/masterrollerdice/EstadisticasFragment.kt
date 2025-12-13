@@ -1,6 +1,5 @@
 package com.example.masterrollerdice
 
-import DadosViewModel
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
@@ -21,6 +20,10 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.card.MaterialCardView
 
+/**
+ * Fragmento que muestra las estadísticas de las tiradas de dados.
+ * Utiliza gráficos de barras (BarChart) para visualizar la frecuencia de cada resultado.
+ */
 class EstadisticasFragment : Fragment() {
 
     private var _binding: FragmentEstadisticasBinding? = null
@@ -53,7 +56,10 @@ class EstadisticasFragment : Fragment() {
         setupCard(binding.cardD100, binding.barChartD100, binding.lineaD100, 100)
     }
 
-    // Función genérica para configurar el listener de expansión y carga de gráfico
+    /**
+     * Configura el listener de clic para expandir/colapsar una tarjeta de dado.
+     * Muestra la animación y carga la gráfica cuando se expande.
+     */
     private fun setupCard(
         card: MaterialCardView,
         chart: BarChart,
@@ -76,7 +82,8 @@ class EstadisticasFragment : Fragment() {
             }
 
             // Animación
-            val startHeight = if (newExpandedState) 247 else 912 // Ajusta estos valores según tus dims reales o usa wrap_content
+            val startHeight =
+                if (newExpandedState) 247 else 912 // Ajusta estos valores según tus dims reales o usa wrap_content
             val endHeight = if (newExpandedState) 912 else 247
 
             val animator = ValueAnimator.ofInt(startHeight, endHeight).apply {
@@ -98,7 +105,7 @@ class EstadisticasFragment : Fragment() {
                     if (newExpandedState) {
                         chart.visibility = View.VISIBLE
                         divider.visibility = View.VISIBLE
-                        
+
                         // Cargar gráfico solo cuando se expande
                         grafica(caras, chart)
                     }
@@ -107,7 +114,9 @@ class EstadisticasFragment : Fragment() {
         }
     }
 
-    // Función actualizada para aceptar el Chart como parámetro
+    /**
+     * Carga y configura los datos y el estilo de la gráfica de barras.
+     */
     fun grafica(caras: Int, chart: BarChart) {
         val entries = model.getChartEntries(caras)
 

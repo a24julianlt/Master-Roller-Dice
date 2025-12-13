@@ -1,7 +1,5 @@
 package com.example.masterrollerdice
 
-import Dado
-import DadosViewModel
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import android.content.res.Resources

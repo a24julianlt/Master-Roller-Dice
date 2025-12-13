@@ -44,7 +44,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeTopRounded">
+        app:shapeAppearanceOverlay="@style/ShapeTopRounded"
+        app:strokeWidth="0dp">
 
         <TextView
             android:id="@+id/txtBorrarHistorial"

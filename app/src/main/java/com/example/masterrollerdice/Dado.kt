@@ -1,3 +1,5 @@
+package com.example.masterrollerdice
+
 data class Dado(val caras: Int, var resultado: Int? = null) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
