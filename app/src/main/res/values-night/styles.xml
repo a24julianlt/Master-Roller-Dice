@@ -3,7 +3,6 @@
 
     <style name="ToolbarTitleStyle" parent="Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/ToolbarTitleText</item>
-        <item name="subtitleTextAppearance">?attr/textAppearanceTitleMedium</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 
@@ -13,7 +12,7 @@
         <item name="android:gravity">top</item>
 
         <!-- Additional top margin for the Title -->
-        <item name="titleMarginTop">10dp</item>
+        <item name="titleMarginTop">5dp</item>
 
 
         <item name="android:outlineAmbientShadowColor" ns1:targetApi="p" tools:targetApi="28">

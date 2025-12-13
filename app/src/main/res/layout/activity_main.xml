@@ -18,7 +18,7 @@
             style="@style/ToolbarTitleStyle"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:title="@string/app_name"
+            app:titleTextAppearance="@style/ToolbarTitleText"
             android:background="?attr/toolbarStyle" />
 
 
