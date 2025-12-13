@@ -1,15 +1,381 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/estadisticasFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/estadisticasFragment"
+    android:background="?attr/background"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".EstadisticasFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="estadisticas" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--D4-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD4"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d4_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D4"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/4"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--D6-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD6"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d6_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D6"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/6"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--D8-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD8"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d8_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D8"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/8"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--D10-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD10"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d10_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D10"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/10"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--D12-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD12"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d12_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D12"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/12"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--D20-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD20"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d20_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D20"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/20"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--D100-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardD100"
+                android:layout_width="983px"
+                android:layout_height="247px"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/rojoPrincipal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="200px"
+                        android:layout_height="200px"
+                        android:src="@drawable/d100_sin_fondo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="D100"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="probabilidad 1/100"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
