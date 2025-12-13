@@ -42,8 +42,9 @@ android {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.gson)
     implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.mpandroidchart)
 
 
     implementation(libs.androidx.core.ktx)

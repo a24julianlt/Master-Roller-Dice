@@ -7,19 +7,19 @@
     android:layout_height="match_parent"
     android:background="?attr/background"
     android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".EstadisticasFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <!--D4-->
@@ -38,37 +38,58 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD4"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d4_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txtD4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D4"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d4"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD4"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/4"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_4"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <View
+                        android:id="@+id/lineaD4"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD4"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -89,36 +110,57 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD6"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d6_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txtD6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D6"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d6"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD6"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/6"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_6"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/lineaD6"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD6"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -139,36 +181,57 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD8"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d8_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txtD8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D8"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d8"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD8"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/8"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_8"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/lineaD8"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD8"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD8"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -189,36 +252,57 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD10"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d10_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txtD10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D10"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d10"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD10"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/10"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_10"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/lineaD10"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD10"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD10"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -239,36 +323,57 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD12"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d12_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txt12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D12"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d12"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD12"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/12"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_12"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/lineaD12"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD12"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -289,36 +394,57 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD20"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d20_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txtD20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D20"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d20"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD20"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/20"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_20"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/lineaD20"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD20"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD20"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -339,36 +465,57 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imgD100"
                         android:layout_width="200px"
                         android:layout_height="200px"
                         android:src="@drawable/d100_sin_fondo"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/txtD100"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="D100"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/d100"
                         android:textColor="@color/white"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/imgD100"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="probabilidad 1/100"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/probabilidad_1_100"
                         android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/lineaD100"
+                        android:layout_width="860px"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/barChartD100"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChartD100"
+                        android:layout_width="860px"
+                        android:layout_height="500px"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

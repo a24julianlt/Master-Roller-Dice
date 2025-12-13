@@ -1,59 +1,164 @@
 package com.example.masterrollerdice
 
+import DadosViewModel
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.example.masterrollerdice.databinding.FragmentEstadisticasBinding
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.google.android.material.card.MaterialCardView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EstadisticasFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EstadisticasFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentEstadisticasBinding? = null
+    private val binding get() = _binding!!
+
+    // Use activityViewModels to share data with other fragments/activity
+    private val model: DadosViewModel by activityViewModels()
+
+    // Map para almacenar el estado de expansión de cada tarjeta
+    private val cardStates = mutableMapOf<Int, Boolean>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_estadisticas, container, false)
+    ): View {
+        _binding = FragmentEstadisticasBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EstadisticasFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EstadisticasFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Configurar todas las tarjetas
+        setupCard(binding.cardD4, binding.barChartD4, binding.lineaD4, 4)
+        setupCard(binding.cardD6, binding.barChartD6, binding.lineaD6, 6)
+        setupCard(binding.cardD8, binding.barChartD8, binding.lineaD8, 8)
+        setupCard(binding.cardD10, binding.barChartD10, binding.lineaD10, 10)
+        setupCard(binding.cardD12, binding.barChartD12, binding.lineaD12, 12)
+        setupCard(binding.cardD20, binding.barChartD20, binding.lineaD20, 20)
+        setupCard(binding.cardD100, binding.barChartD100, binding.lineaD100, 100)
+    }
+
+    // Función genérica para configurar el listener de expansión y carga de gráfico
+    private fun setupCard(
+        card: MaterialCardView,
+        chart: BarChart,
+        divider: View,
+        caras: Int
+    ) {
+        // Inicializar estado
+        cardStates[caras] = false
+
+        card.setOnClickListener {
+            // Alternar estado
+            val isExpanded = cardStates[caras] ?: false
+            val newExpandedState = !isExpanded
+            cardStates[caras] = newExpandedState
+
+            // Si vamos a cerrar, ocultamos primero
+            if (!newExpandedState) {
+                chart.visibility = View.GONE
+                divider.visibility = View.GONE
+            }
+
+            // Animación
+            val startHeight = if (newExpandedState) 247 else 912 // Ajusta estos valores según tus dims reales o usa wrap_content
+            val endHeight = if (newExpandedState) 912 else 247
+
+            val animator = ValueAnimator.ofInt(startHeight, endHeight).apply {
+                duration = 400
+                interpolator = AccelerateDecelerateInterpolator()
+
+                addUpdateListener { valueAnimator ->
+                    val value = valueAnimator.animatedValue as Int
+                    val params = card.layoutParams
+                    params.height = value
+                    card.layoutParams = params
                 }
             }
+
+            animator.start()
+
+            animator.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    if (newExpandedState) {
+                        chart.visibility = View.VISIBLE
+                        divider.visibility = View.VISIBLE
+                        
+                        // Cargar gráfico solo cuando se expande
+                        grafica(caras, chart)
+                    }
+                }
+            })
+        }
+    }
+
+    // Función actualizada para aceptar el Chart como parámetro
+    fun grafica(caras: Int, chart: BarChart) {
+        val entries = model.getChartEntries(caras)
+
+        val typedValue = TypedValue()
+        requireContext().theme.resolveAttribute(android.R.attr.colorBackground, typedValue, true)
+        val backgroundColor = typedValue.data
+
+        val dataSet = BarDataSet(entries, "Frecuencia")
+        dataSet.color = backgroundColor
+        dataSet.setDrawValues(false)
+        dataSet.valueTextColor = Color.BLACK
+        dataSet.valueTextSize = 12f
+
+        val barData = BarData(dataSet)
+        barData.barWidth = 0.5f
+
+        chart.data = barData
+        chart.description.isEnabled = false
+        chart.legend.isEnabled = false
+        chart.setFitBars(true)
+        chart.animateY(1000)
+
+        val xAxis = chart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.textColor = Color.BLACK
+        xAxis.axisLineColor = Color.BLACK
+        xAxis.setDrawGridLines(false)
+        xAxis.granularity = 1f
+        xAxis.setLabelCount(caras)
+
+        xAxis.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return value.toInt().toString()
+            }
+        }
+
+        val axisLeft = chart.axisLeft
+        axisLeft.textColor = Color.BLACK
+        axisLeft.axisLineColor = Color.BLACK
+        axisLeft.setDrawGridLines(false)
+        axisLeft.axisMinimum = 0f
+        axisLeft.setDrawLabels(false)
+
+        chart.axisRight.isEnabled = false
+        chart.setDrawBorders(false)
+
+        chart.invalidate()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
