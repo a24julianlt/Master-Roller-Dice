@@ -35,6 +35,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d4_dado"
                 android:src="@drawable/d4_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -51,6 +52,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d6_dado"
                 android:src="@drawable/d6_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -67,6 +69,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d8_dado"
                 android:src="@drawable/d8_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -83,6 +86,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d10_dado"
                 android:src="@drawable/d10_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -99,6 +103,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d12_dado"
                 android:src="@drawable/d12_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -115,6 +120,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d20_dado"
                 android:src="@drawable/d20_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -133,6 +139,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/d100_dado"
                 android:src="@drawable/d100_sin_fondo" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -185,7 +192,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MODIFICADOR"
+                android:text="@string/modificador"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp" />

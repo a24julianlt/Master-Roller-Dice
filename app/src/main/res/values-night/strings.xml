@@ -4,4 +4,12 @@
     <string name="navigation_drawer_close">Cerrar menú</string>
     <string name="roll">ROLL</string>
     <string name="borrar_historial">BORRAR HISTORIAL</string>
+    <string name="modificador">MODIFICADOR</string>
+    <string name="d100_dado">d100 dado</string>
+    <string name="d20_dado">d20 dado</string>
+    <string name="d12_dado">d12 dado</string>
+    <string name="d10_dado">d10 dado</string>
+    <string name="d8_dado">d8 dado</string>
+    <string name="d6_dado">d6 dado</string>
+    <string name="d4_dado">d4 dado</string>
 </resources>
