@@ -57,29 +57,36 @@ class HistorialAdapter(
         b.resultTirada.text = item.resultado.toString()
         b.modificadorTirada.text = item.modificador.toString()
 
+        // 1. ORDENAR LOS DADOS: d4 < d6 < d8 < d10 < d12 < d20 < d100
+        val listaOrdenada = item.dados.sortedBy { it.caras }
+
         // Configuración avanzada del Grid para centrar elementos
-        val totalDados = lista.size
+        val totalDados = listaOrdenada.size
         val layoutManager = GridLayoutManager(holder.itemView.context, 6) // Usamos 6 columnas base
 
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 val resto = totalDados % 3
-
-                // Lógica corregida para centrar elementos en la última fila
+                
+                // Si sobra 1 elemento en la última fila, ocupa tod0 el ancho (centrado)
                 if (resto == 1 && position == totalDados - 1) {
-                    return 6 // El último elemento ocupa tod0 el ancho (centrado)
+                    return 6 
                 }
+                // Si sobran 2 elementos en la última fila, ocupan la mitad cada uno
                 if (resto == 2 && position >= totalDados - 2) {
-                    return 3 // Los dos últimos ocupan la mitad cada uno
+                    return 3 
                 }
-                return 2 // Por defecto, 3 elementos por fila (6 / 2 = 3 huecos)
+                // Por defecto, 3 elementos por fila (6 / 2 = 3 columnas visuales)
+                return 2 
             }
         }
 
         b.recyclerDados.apply {
             this.layoutManager = layoutManager
-            adapter = DadosHistorialAdapter(item.dados)
+            adapter = DadosHistorialAdapter(listaOrdenada)
             setHasFixedSize(true)
+            // Deshabilitar scroll anidado para que el RecyclerView padre maneje el scroll
+            isNestedScrollingEnabled = false 
         }
     }
 
