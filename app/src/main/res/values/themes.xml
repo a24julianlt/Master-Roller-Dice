@@ -23,4 +23,12 @@
         <item name="android:fontFamily">@font/chakra_petch_medium</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <!-- Estilo para el diálogo de filtros -->
+    <style name="MyAlertDialogStyle" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="android:windowBackground">?attr/background</item>
+        <item name="colorAccent">@color/rojoPrincipal</item>
+        <item name="android:colorAccent">@color/rojoPrincipal</item>
+    </style>
+
 </resources>

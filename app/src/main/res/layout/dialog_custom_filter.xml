@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="?attr/background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="@string/seleccionar_dados"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/list_view_dice"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:choiceMode="multipleChoice"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+    <LinearLayout
+        style="?attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btn_mode"
+            style="?attr/buttonBarNeutralButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text="@string/modo_ncualquiera"
+            android:textColor="@color/rojoSecundario" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="?attr/buttonBarNegativeButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:textColor="@color/rojoSecundario" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            style="?attr/buttonBarPositiveButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:textColor="@color/rojoSecundario"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

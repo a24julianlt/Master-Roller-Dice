@@ -9,17 +9,87 @@
     android:orientation="vertical"
     tools:context=".HistorialFragment">
 
+    <!-- Contenedor de Filtros -->
+    <LinearLayout
+        android:id="@+id/filtersContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Filtro de Dados -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFilterDice"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.5"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/dados"
+            android:textColorHint="?attr/android:textColor"
+            app:startIconDrawable="@drawable/ic_dice_filter">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/autoCompleteDice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"
+                android:textColor="?attr/android:textColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Filtro de Fecha -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFilterDate"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.5"
+            android:layout_marginEnd="5dp"
+            android:hint="Fecha"
+            android:textColorHint="?attr/android:textColor"
+            app:startIconDrawable="@drawable/ic_calendar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editFilterDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"
+                android:textColor="?attr/android:textColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botón Limpiar Filtros -->
+        <ImageButton
+            android:id="@+id/btnClearFilters"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_close"
+            android:contentDescription="Limpiar filtros"
+            android:visibility="invisible"
+            app:tint="@color/rojoSecundario" />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHistorial"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:paddingBottom="100dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/filtersContainer" />
 
     <!-- Dim layer -->
     <View
@@ -67,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="¿Estas seguro de borrar tu historial de tiradas?"
+                android:text="@string/estas_seguro_de_borrar_tu_historial_de_tiradas"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/rojoSecundario"
-                android:text="CANCELAR"
+                android:text="@string/cancelar"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -91,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="BORRAR"
+                android:text="@string/borrar"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:backgroundTint="@color/rojoPrincipal"
