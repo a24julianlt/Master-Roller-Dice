@@ -90,6 +90,11 @@ class DadosViewModel(application: Application) : AndroidViewModel(application) {
      * Guarda el resultado en el historial y actualiza las estadísticas.
      */
     fun roll(mod: Int?) {
+        // Ejecutar efectos de sonido y vibración ANTES de los cálculos
+        if (listaDados.isNotEmpty()) {
+            playSoundAndVibrate()
+        }
+        
         result.value = 0
 
         listaDados.forEach { dado ->
@@ -117,10 +122,6 @@ class DadosViewModel(application: Application) : AndroidViewModel(application) {
         listaHistorial.value = listaHistorial.value
 
         saveHistorial()
-
-        if (listaDados.isNotEmpty()) {
-            playSoundAndVibrate()
-        }
     }
 
     /**

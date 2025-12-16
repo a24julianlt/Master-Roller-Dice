@@ -6,6 +6,7 @@
     android:background="?attr/drawerLayoutStyle">
 
     <ImageView
+        android:layout_marginTop="50dp"
         android:layout_width="414px"
         android:layout_height="525px"
         android:scaleType="centerCrop"
