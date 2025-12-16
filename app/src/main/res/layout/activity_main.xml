@@ -42,6 +42,7 @@
         app:itemTextAppearance="@style/DrawerTextStyle"
         app:itemTextColor="@color/black"
         app:itemIconTint="@color/black"
+        app:itemShapeFillColor="@drawable/selector_drawer_shape_fill"
         android:background="@color/drawer_background"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

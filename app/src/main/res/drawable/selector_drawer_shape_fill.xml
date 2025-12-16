@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado seleccionado: Rojo Secundario -->
+    <item android:color="@color/rojoSecundario" android:state_checked="true" />
+    <item android:color="@color/rojoSecundario" android:state_pressed="true" />
+    
+    <!-- Estado por defecto: Transparente (para que se vea el fondo del drawer) -->
+    <item android:color="@android:color/transparent" />
+</selector>

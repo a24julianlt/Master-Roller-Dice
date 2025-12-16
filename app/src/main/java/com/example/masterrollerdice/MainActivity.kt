@@ -2,6 +2,7 @@ package com.example.masterrollerdice
 
 import android.content.res.ColorStateList
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -61,8 +62,31 @@ class MainActivity : AppCompatActivity() {
 
         val thumbColor = ContextCompat.getColor(this, R.color.rojoPrincipal)
         val trackColor = ContextCompat.getColor(this, R.color.rojoSecundario)
-        val thumbStateList = ColorStateList.valueOf(thumbColor)
-        val trackStateList = ColorStateList.valueOf(trackColor)
+        val blackColor = Color.BLACK // Negro para estado desactivado (bolita)
+
+        // Creamos ColorStateList para thumb: Rojo si está activado, Negro si está desactivado
+        val thumbStateList = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_checked),
+                intArrayOf(-android.R.attr.state_checked) // Desactivado
+            ),
+            intArrayOf(
+                thumbColor,
+                blackColor
+            )
+        )
+
+        // Creamos ColorStateList para track: Rojo Secundario SIEMPRE
+        val trackStateList = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_checked),
+                intArrayOf(-android.R.attr.state_checked) // Desactivado
+            ),
+            intArrayOf(
+                trackColor,
+                trackColor // Fondo siempre rojoSecundario, aunque el thumb sea negro
+            )
+        )
 
         fun styleSwitch(switch: SwitchCompat) {
             switch.thumbTintList = thumbStateList
