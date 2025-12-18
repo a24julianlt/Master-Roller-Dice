@@ -68,12 +68,11 @@ class InicioFragment : Fragment() {
             }
         }
 
-
-
-
         binding.btnRoll.setOnClickListener {
             if (!model.listaDados.isEmpty()) {
                 model.roll(model.modificador.value)
+                limpiarResultados()
+                mostrarResultados()
             }
 
         }
@@ -119,6 +118,31 @@ class InicioFragment : Fragment() {
         animator.duration = 300
         animator.doOnEnd { endAction?.invoke() }
         animator.start()
+    }
+
+    private fun limpiarResultados() {
+        binding.resultD4.text = ""
+        binding.resultD6.text = ""
+        binding.resultD8.text = ""
+        binding.resultD10.text = ""
+        binding.resultD12.text = ""
+        binding.resultD20.text = ""
+        binding.resultD100.text = ""
+    }
+
+    private fun mostrarResultados() {
+        model.listaDados.forEach { dado ->
+            when (dado.caras) {
+                4 -> binding.resultD4.text = dado.resultado.toString()
+                6 -> binding.resultD6.text = dado.resultado.toString()
+                8 -> binding.resultD8.text = dado.resultado.toString()
+                10 -> binding.resultD10.text = dado.resultado.toString()
+                12 -> binding.resultD12.text = dado.resultado.toString()
+                20 -> binding.resultD20.text = dado.resultado.toString()
+                100 -> binding.resultD100.text = dado.resultado.toString()
+                else -> ""
+            }
+        }
     }
 
     fun Int.dpToPx() = (this * Resources.getSystem().displayMetrics.density).toInt()

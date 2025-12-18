@@ -11,7 +11,7 @@
     <GridLayout
         android:id="@+id/gridDados"
         android:layout_width="865px"
-        android:layout_height="955px"
+        android:layout_height="1050px"
         android:layout_marginTop="10dp"
         android:alignmentMode="alignBounds"
         android:columnCount="3"
@@ -26,7 +26,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD4"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:backgroundTint="?attr/background"
@@ -34,17 +34,28 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d4_dado"
                 android:src="@drawable/d4_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- D6 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD6"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:backgroundTint="?attr/background"
@@ -52,17 +63,28 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d6_dado"
                 android:src="@drawable/d6_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- D8 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD8"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:backgroundTint="?attr/background"
@@ -70,17 +92,28 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d8_dado"
                 android:src="@drawable/d8_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- D10 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD10"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:backgroundTint="?attr/background"
@@ -88,17 +121,28 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d10_dado"
                 android:src="@drawable/d10_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- D12 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD12"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:backgroundTint="?attr/background"
@@ -106,17 +150,28 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d12_dado"
                 android:src="@drawable/d12_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- D20 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD20"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:backgroundTint="?attr/background"
@@ -124,17 +179,28 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d20_dado"
                 android:src="@drawable/d20_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- D100 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardD100"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_row="2"
             android:layout_rowWeight="1"
             android:layout_column="1"
@@ -144,10 +210,21 @@
             app:strokeWidth="0dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/d100_dado"
                 android:src="@drawable/d100_sin_fondo" />
+
+            <TextView
+                android:id="@+id/resultD100"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
     </GridLayout>
@@ -216,7 +293,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMinus"
                     android:layout_width="40dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_margin="20dp"
                     android:layout_marginEnd="34dp"
                     android:backgroundTint="?attr/buttonStyle"
@@ -234,7 +311,7 @@
                 <TextView
                     android:id="@+id/txtModificador"
                     android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:background="@drawable/bg_txtview_modificador"
                     android:gravity="center"
@@ -249,7 +326,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPlus"
                     android:layout_width="40dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_margin="20dp"
                     android:layout_marginStart="36dp"
                     android:backgroundTint="?attr/buttonStyle"
